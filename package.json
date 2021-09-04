@@ -1,0 +1,29 @@
+{
+  "name": "10-team-profile-generator",
+  "version": "1.0.0",
+  "description": "PERSONAL NOTES FOR CHALLENGE 10 - Team Profile Generator",
+  "main": "index.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "dependencies": {
+    "inquirer": "^8.1.2"
+  },
+  "devDependencies": {
+    "jest": "^27.1.0"
+  },
+  "scripts": {
+    "test": "test",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Padredilg/team-profile-generator.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Padredilg/team-profile-generator/issues"
+  },
+  "homepage": "https://github.com/Padredilg/team-profile-generator#readme"
+}
