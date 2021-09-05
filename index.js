@@ -9,8 +9,8 @@ const inquirer = require('inquirer');
     //what to add next, and it must call the next or return
 //team.name
 let team = {
-    name: '',
-    managers: [],
+    team: '',
+    manager: "",
     engineers: [],
     interns: []
 };
@@ -35,7 +35,7 @@ const addTeam = () => {
 };
 
 const addManager = () => {
-    return inquirer.prompt([
+    inquirer.prompt([
         {//Manager's Name
             type: 'input',
             name: 'name',
@@ -100,18 +100,19 @@ const addManager = () => {
         }
     ])
     .then(managerInfo => {
-        team.managers.push(managerInfo)
-        //check what managerInfo.choices is and act accordingly
-        if(managerInfo.choices === 'Add an Engineer'){
+        team.manager = managerInfo;
+        //check what managerInfo.next is and act accordingly
+        if(managerInfo.next === 'Add an Engineer'){
             addEngineer();
         }
-        else if(managerInfo.choices === 'Add an Intern'){
+        else if(managerInfo.next === 'Add an Intern'){
             addIntern();
         }
-        return;
+        else{
+            writeToFile();
+        }
     })
 }
-
 
 const addEngineer = () => {
     console.log(`
@@ -119,7 +120,7 @@ const addEngineer = () => {
     Add a New Engineer
     =================
     `);    
-    return inquirer.prompt([
+    inquirer.prompt([
         {//Engineer's Name
             type: 'input',
             name: 'name',
@@ -185,14 +186,16 @@ const addEngineer = () => {
     ])
     .then(engineerInfo => {
         team.engineers.push(engineerInfo)
-        //check what engineerInfo.choices is and act accordingly
-        if(engineerInfo.choices === 'Add an Engineer'){
+        //check what engineerInfo.next is and act accordingly
+        if(engineerInfo.next === 'Add an Engineer'){
             addEngineer();
         }
-        else if(engineerInfo.choices === 'Add an Intern'){
+        else if(engineerInfo.next === 'Add an Intern'){
             addIntern();
         }
-        return;
+        else{
+            writeToFile();
+        }
     })
 };
 
@@ -202,7 +205,7 @@ const addIntern = () => {
     Add a New Intern
     =================
     `);    
-    return inquirer.prompt([
+    inquirer.prompt([
         {//Intern's Name
             type: 'input',
             name: 'name',
@@ -268,27 +271,30 @@ const addIntern = () => {
     ])
     .then(internInfo => {
         team.interns.push(internInfo)
-        //check what internInfo.choices is and act accordingly
-        if(internInfo.choices === 'Add an Engineer'){
+        //check what internInfo.next is and act accordingly
+        if(internInfo.next === 'Add an Engineer'){
             addEngineer();
         }
-        else if(internInfo.choices === 'Add an Intern'){
+        else if(internInfo.next === 'Add an Intern'){
             addIntern();
         }
-        //return;
+        else{
+            writeToFile();
+        }
     })
 };
+
+function writeToFile(){
+    console.log(team);
+}
 
 //Call questions and store answers in array
 function init() {
     addTeam()
         .then(teamData => {
-            team.name = teamData.team;
-            return addManager();
-        })
-        .then(() => {
-            console.log(team);
-        })
+            team.team = teamData.team;
+            addManager();
+        })        
 }
 
 init();
