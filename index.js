@@ -1,13 +1,9 @@
 //require packages and files
 const inquirer = require('inquirer');
+const generatePage = require('./src/page-template.js');
+const { writeFile } = require('./src/generate-site.js');
 
-//Create questions
-//One array for each employee type
-//Manager is the first to be called
-
-//last question for each of them must be 
-    //what to add next, and it must call the next or return
-//team.name
+//team will store info and will be used to create the HTML
 let team = {
     team: '',
     manager: "",
@@ -15,6 +11,7 @@ let team = {
     interns: []
 };
 
+//prompt functions
 const addTeam = () => {
     return inquirer.prompt([
         {//Team's Name
@@ -109,10 +106,10 @@ const addManager = () => {
             addIntern();
         }
         else{
-            writeToFile();
+            createHTML();
         }
     })
-}
+};
 
 const addEngineer = () => {
     console.log(`
@@ -194,7 +191,7 @@ const addEngineer = () => {
             addIntern();
         }
         else{
-            writeToFile();
+            createHTML();
         }
     })
 };
@@ -279,33 +276,24 @@ const addIntern = () => {
             addIntern();
         }
         else{
-            writeToFile();
+            createHTML();
         }
     })
 };
 
-function writeToFile(){
-    console.log(team);
-}
+//function to createHTML
+function createHTML(){
+    //import template literal that gets built from generatePage(team) to a variable
+    let page = generatePage(team);
+    console.log(page);
+
+    //write an html file with the page variable
+    //writeFile(page);
+};
 
 //Call questions and store answers in array
-function init() {
-    addTeam()
-        .then(teamData => {
-            team.team = teamData.team;
-            addManager();
-        })        
-}
-
-init();
-
-//Create all classes and their tests - ?
-
-//Create template literal in src
-
-//Create CSS in dist
-
-//write file to dist
-
-//I want to have an answers array that will have
-//team.name, team.manager, team.engineers, team.interns
+addTeam()
+    .then(teamData => {
+        team.team = teamData.team;
+        addManager();
+    });
