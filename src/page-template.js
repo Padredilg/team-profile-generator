@@ -5,28 +5,30 @@ function generateManager(manager){
 }
 
 function generateCardSection(members) {
+    console.log(members.engineers[0].name);
+
     if(members.manager && members.engineers && members.interns){
         return `
-            <div>${members.manager.name}</div>
-            <div>${members.engineers[0].name}</div>
-            <div>${members.interns[0].name}</div>
+            <div>${members.manager}</div>
+            <div>${members.engineers[0]}</div>
+            <div>${members.interns[0]}</div>
         `
     }
     else if(members.manager && members.engineers){
         return `
-            <div>${members.manager.name}</div>
-            <div>${members.engineers[0].name}</div>
+            <div>${members.manager}</div>
+            <div>${members.engineers[0]}</div>
         `
     }
     else if(members.manager &&  members.interns){
         return `
-            <div>${members.manager.name}</div>
-            <div>${members.interns[0].name}</div>
+            <div>${members.manager}</div>
+            <div>${members.interns[0]}</div>
         `
     }
     else{
         return `
-            <div>${members.manager.name}</div>
+            <div>${members.manager}</div>
         `
     }
 }
