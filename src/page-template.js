@@ -1,34 +1,36 @@
 //create function that return the whole cards section. it uses if statement to check which members are present to create the needed cards
 //this function uses another function to generate as many cards as needed given the number of elements, using map
-function generateManager(manager){
-    
+function generateManagerCard(manager){
+    //receives the manager object and generates a card for it.
+    return`
+    `
 }
 
 function generateCardSection(members) {
-    console.log(members.engineers[0].name);
+    console.log(members);
 
-    if(members.manager && members.engineers && members.interns){
+    if(members.manager && members.engineers[0] && members.interns[0]){
         return `
-            <div>${members.manager}</div>
-            <div>${members.engineers[0]}</div>
-            <div>${members.interns[0]}</div>
+            <div>${generateManagerCard(members.manager)}</div>
+            <div>${members.engineers[0].name}</div>
+            <div>${members.interns[0].name}</div>
         `
     }
-    else if(members.manager && members.engineers){
+    else if(members.manager && members.engineers[0]){
         return `
-            <div>${members.manager}</div>
-            <div>${members.engineers[0]}</div>
+            <div>${generateManagerCard(members.manager)}</div>
+            <div>${members.engineers[0].name}</div>
         `
     }
-    else if(members.manager &&  members.interns){
+    else if(members.manager &&  members.interns[0]){
         return `
-            <div>${members.manager}</div>
-            <div>${members.interns[0]}</div>
+            <div>${generateManagerCard(members.manager)}</div>
+            <div>${members.interns[0].name}</div>
         `
     }
     else{
         return `
-            <div>${members.manager}</div>
+            <div>${generateManagerCard(members.manager)}</div>
         `
     }
 }
@@ -46,6 +48,7 @@ module.exports = pageData => {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
 
