@@ -2,8 +2,17 @@
 //this function uses another function to generate as many cards as needed given the number of elements, using map
 function generateManagerCard(manager){
     //receives the manager object and generates a card for it.
-    return`
-    `
+    return;
+}
+
+function generateEngineersCards(engineers){
+    //use mapping function to create cards for each engineer
+    return;
+}
+
+function generateInternsCards(interns){
+    //use mapping to create cards for each intern
+    return;
 }
 
 function generateCardSection(members) {
@@ -12,20 +21,20 @@ function generateCardSection(members) {
     if(members.manager && members.engineers[0] && members.interns[0]){
         return `
             <div>${generateManagerCard(members.manager)}</div>
-            <div>${members.engineers[0].name}</div>
-            <div>${members.interns[0].name}</div>
+            <div>${generateEngineersCards(members.engineers)}</div>
+            <div>${generateInternsCards(members.interns)}</div>
         `
     }
     else if(members.manager && members.engineers[0]){
         return `
             <div>${generateManagerCard(members.manager)}</div>
-            <div>${members.engineers[0].name}</div>
+            <div>${generateEngineersCards(members.engineers)}</div>
         `
     }
     else if(members.manager &&  members.interns[0]){
         return `
             <div>${generateManagerCard(members.manager)}</div>
-            <div>${members.interns[0].name}</div>
+            <div>${generateInternsCards(members.interns)}</div>
         `
     }
     else{
