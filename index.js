@@ -42,7 +42,14 @@ const addManager = () => {
             message: "Please enter the manager's name (required):",
             validate: managerInput => {
                 if(managerInput){
-                    return true;
+                    var letters = /^[A-Za-z]+$/;
+                    if(managerInput.match(letters)){
+                        return true;
+                    }
+                    else{
+                        console.log(" - Input contains invalid characters");
+                        return false;
+                    }
                 }
                 else{
                     console.log("Enter the manager's name!");
@@ -128,10 +135,17 @@ const addEngineer = () => {
             message: "Please enter the Engineer's name (required):",
             validate: engineerInput => {
                 if(engineerInput){
-                    return true;
+                    var letters = /^[A-Za-z]+$/;
+                    if(engineerInput.match(letters)){
+                        return true;
+                    }
+                    else{
+                        console.log(" - Input contains invalid characters");
+                        return false;
+                    }
                 }
                 else{
-                    console.log("Enter the Engineer's name!");
+                    console.log("Enter the engineer's name!");
                     return false;
                 }
             }
@@ -214,10 +228,17 @@ const addIntern = () => {
             message: "Please enter the Intern's name (required):",
             validate: internInput => {
                 if(internInput){
-                    return true;
+                    var letters = /^[A-Za-z]+$/;
+                    if(internInput.match(letters)){
+                        return true;
+                    }
+                    else{
+                        console.log(" - Input contains invalid characters");
+                        return false;
+                    }
                 }
                 else{
-                    console.log("Enter the Intern's name!");
+                    console.log("Enter the intern's name!");
                     return false;
                 }
             }
