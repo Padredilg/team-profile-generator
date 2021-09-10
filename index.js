@@ -2,6 +2,9 @@
 const inquirer = require('inquirer');
 const generatePage = require('./src/page-template.js');
 const { writeFile } = require('./src/generate-site.js');
+const Manager = require('./lib/Manager.js');
+const Engineer = require('./lib/Engineer.js');
+const Intern = require('./lib/Intern.js');
 
 //team will store info and will be used to create the HTML
 let team = {
@@ -97,7 +100,8 @@ const addManager = () => {
         }
     ])
     .then(managerInfo => {
-        team.manager = managerInfo;
+        const manager = new Manager(managerInfo.name, managerInfo.id, managerInfo.email, managerInfo.officeNumber)
+        team.manager = manager;
         //check what managerInfo.next is and act accordingly
         if(managerInfo.next === 'Add an Engineer'){
             addEngineer();
@@ -162,7 +166,7 @@ const addEngineer = () => {
         },
         {//Engineer's Github
             type: 'input',
-            name: 'Github',
+            name: 'github',
             message: "Please enter the Engineer's Github username(required):",
             validate: githubInput => {
                 if(githubInput){
@@ -182,7 +186,8 @@ const addEngineer = () => {
         }
     ])
     .then(engineerInfo => {
-        team.engineers.push(engineerInfo)
+        const engineer = new Engineer(engineerInfo.name, engineerInfo.id, engineerInfo.email, engineerInfo.github)
+        team.engineers.push(engineer);
         //check what engineerInfo.next is and act accordingly
         if(engineerInfo.next === 'Add an Engineer'){
             addEngineer();
@@ -267,7 +272,8 @@ const addIntern = () => {
         }
     ])
     .then(internInfo => {
-        team.interns.push(internInfo)
+        const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.github)
+        team.interns.push(intern);
         //check what internInfo.next is and act accordingly
         if(internInfo.next === 'Add an Engineer'){
             addEngineer();
