@@ -290,11 +290,11 @@ const addIntern = () => {
 //function to createHTML
 function createHTML(){
     //import template literal that gets built from generatePage(team) to a variable
-    let page = generatePage(team);
-    console.log(page);
+    let page = generatePage(team);//creates the html with the page-template.js
 
     //write an html file with the page variable
-    //writeFile(page);
+    writeFile(page);//uses function exported from generate-site.js to create file in the dist folder
+    console.log("index.html file created inside dist folder.")
 };
 
 //Call questions and store answers in array

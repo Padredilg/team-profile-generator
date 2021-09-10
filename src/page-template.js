@@ -1,47 +1,62 @@
-//create function that return the whole cards section. it uses if statement to check which members are present to create the needed cards
-//this function uses another function to generate as many cards as needed given the number of elements, using map
-function generateManagerCard(manager){
-    //receives the manager object and generates a card for it.
-    return;
-}
-
-function generateEngineersCards(engineers){
-    //use mapping function to create cards for each engineer
-    return;
-}
-
-function generateInternsCards(interns){
-    //use mapping to create cards for each intern
-    return;
-}
-
-function generateCardSection(members) {
-    console.log(members);
-
+function generateSections(members) {
     if(members.manager && members.engineers[0] && members.interns[0]){
         return `
-            <div>${generateManagerCard(members.manager)}</div>
-            <div>${generateEngineersCards(members.engineers)}</div>
-            <div>${generateInternsCards(members.interns)}</div>
+        ${generateManagerSection(members.manager)}
+        ${generateEngineersSection(members.engineers)}
+        ${generateInternsSection(members.interns)}
         `
     }
     else if(members.manager && members.engineers[0]){
         return `
-            <div>${generateManagerCard(members.manager)}</div>
-            <div>${generateEngineersCards(members.engineers)}</div>
+        ${generateManagerSection(members.manager)}
+        ${generateEngineersSection(members.engineers)}
         `
     }
     else if(members.manager &&  members.interns[0]){
         return `
-            <div>${generateManagerCard(members.manager)}</div>
-            <div>${generateInternsCards(members.interns)}</div>
+        ${generateManagerSection(members.manager)}
+        ${generateInternsSection(members.interns)}
         `
     }
-    else{
-        return `
-            <div>${generateManagerCard(members.manager)}</div>
-        `
+    else{//only a manager is present
+        return `${generateManagerSection(members.manager)}`
     }
+}
+
+function generateManagerSection(manager){
+    //receives the manager object and generates a card for it.
+    /*
+    use a card syntax from bootstrap to implement
+    manager.getName()
+    manager.getId()
+    manager.getEmail()
+    manager.getOfficeNumber()
+    manager.getRole()
+    */
+    return`
+        <div class="card" style="width: 18rem;">
+            <div class="card-header">
+                ${manager.getRole()}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Name: ${manager.getName()}</li>
+                <li class="list-group-item">ID: ${manager.getId()}</li>
+                <li class="list-group-item">Email: ${manager.getEmail()}</li>
+                <li class="list-group-item">Office Number: ${manager.getOfficeNumber()}</li>
+            </ul>
+        </div>
+    `;
+}
+
+function generateEngineersSection(engineers){
+    //use mapping function to create cards for each engineer
+    //maybe use map to call a function that prints the html syntax for a card for each engineer
+    return;
+}
+
+function generateInternsSection(interns){
+    //use mapping to create cards for each intern
+    return;
 }
 
 module.exports = pageData => {
@@ -57,22 +72,17 @@ module.exports = pageData => {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Portfolio Demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <header>
-      <div class="">
-        <h1 class="">${team}</h1>
-      </div>
+        <h1 id="team">${team}</h1>
     </header>
 
     <main class="">
-        <!--you have to generate cards for each-->
-        <div>
-            ${generateCardSection(members)}
-        </div>
+        ${generateSections(members)}
     </main>
   </body>
   </html>
