@@ -272,7 +272,7 @@ const addIntern = () => {
         }
     ])
     .then(internInfo => {
-        const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.github)
+        const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school)
         team.interns.push(intern);
         //check what internInfo.next is and act accordingly
         if(internInfo.next === 'Add an Engineer'){
@@ -294,12 +294,12 @@ function createHTML(){
 
     //write an html file with the page variable
     writeFile(page);//uses function exported from generate-site.js to create file in the dist folder
-    console.log("index.html file created inside dist folder.")
+    console.log("index.html file created inside dist/ folder.")
 };
 
-//Call questions and store answers in array
+//START
 addTeam()
     .then(teamData => {
         team.team = teamData.team;
-        addManager();
+        addManager();//From this function, all subsequent prompts will follow and file will be written in the end
     });
