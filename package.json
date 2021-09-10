@@ -13,7 +13,7 @@
     "jest": "^27.1.0"
   },
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "node index.js"
   },
   "repository": {
