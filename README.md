@@ -23,7 +23,7 @@ https://user-images.githubusercontent.com/85601336/132934616-5b40084a-ef90-4066-
 ## Sample
 A webpage generated with this code will look like this:
 
-</br><img alt="screenshot from website" src="./assets/images/tpg.png "></img>
+</br><img alt="screenshot from sample html generated" src="./assets/images/tpg.png "></img>
 
 ## License
 This application is covered under the <a href='https://opensource.org/licenses/MIT'>MIT License</a>
