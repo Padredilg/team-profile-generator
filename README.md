@@ -12,7 +12,7 @@
 This code can be used to create a webpage populated with the information of each member on a team of engineers.
 
 ## Installation
-In order to use this code, you must first clone it to your local machine. Once cloned, open the terminal in the code's root and run "npm init -y", followed by "npm install inquirer". Make sure to add node_modules to the .gitignore file. 
+In order to use this code, you must first clone it to your local machine. Once cloned, open the terminal in the code's root and run "npm init -y", then "npm i", followed by "npm install inquirer". Make sure to add node_modules to the .gitignore file. 
 
 ## Usage
 Once the installs are completed, you will be ready to start your code by using the command "node index" or "npm start".</br>
