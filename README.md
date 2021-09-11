@@ -18,7 +18,7 @@ In order to use this code, you must first clone it to your local machine. Once c
 Once the installs are completed, you will be ready to start your code by using the command "node index" or "npm start".</br>
 The video below shows an example on how to use the code:</br>
 
-video goes here
+https://user-images.githubusercontent.com/85601336/132934616-5b40084a-ef90-4066-953b-32f105bc3d44.mp4
 
 ## Sample
 A webpage generated with this code will look like this:
