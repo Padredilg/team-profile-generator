@@ -197,7 +197,7 @@ const addEngineer = () => {
                     })
                 
                     if(invalid){
-                        console.log("This ID is already being used by someone else.")
+                        console.log(" --> This ID is already being used by someone else.")
                         return false;
                     }
                     else{
@@ -325,7 +325,7 @@ const addIntern = () => {
                     })
                 
                     if(invalid){
-                        console.log(" --> This ID is already being used by someone else.")
+                        console.log(" --> -->  This ID is already being used by someone else.")
                         return false;
                     }
                     else{
