@@ -47,7 +47,7 @@ const addManager = () => {
                         return true;
                     }
                     else{
-                        console.log(" - Input contains invalid characters");
+                        console.log(" --> Input contains invalid characters");
                         return false;
                     }
                 }
@@ -77,7 +77,13 @@ const addManager = () => {
             message: "Please enter the manager's email address (required):",
             validate: emailInput => {
                 if(emailInput){
-                    return true;
+                    if(emailInput.includes("@")){
+                        return true;
+                    }
+                    else{
+                        console.log(" --> Make sure that the email is formatted properly!");
+                        return false;
+                    }
                 }
                 else{
                     console.log("Enter the manager's email address!");
@@ -140,7 +146,7 @@ const addEngineer = () => {
                         return true;
                     }
                     else{
-                        console.log(" - Input contains invalid characters");
+                        console.log(" --> Input contains invalid characters");
                         return false;
                     }
                 }
@@ -156,7 +162,35 @@ const addEngineer = () => {
             message: "Please enter the Engineer's ID (required):",
             validate: idInput => {
                 if(idInput){
-                    return true;
+                    var invalid = false;
+
+                    //check if idInput matches manager id.
+                    if(idInput == team.manager.getId()){
+                        invalid = true;
+                    }
+    
+                    team.engineers.forEach(engineer=>{
+                        //if any engineer id's match idInput, set invalid to true.
+                        if(idInput == engineer.getId()){
+                            invalid = true;
+                        }
+                    })
+    
+                    //do the same for interns.
+                    team.interns.forEach(intern=>{
+                        //if any intern id's match idInput, set invalid to true.
+                        if(idInput == intern.getId()){
+                            invalid = true;
+                        }
+                    })
+                
+                    if(invalid){
+                        console.log("This ID is already being used by someone else.")
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
                 }
                 else{
                     console.log("Enter the Engineer's ID!");
@@ -170,7 +204,13 @@ const addEngineer = () => {
             message: "Please enter the Engineer's email address (required):",
             validate: emailInput => {
                 if(emailInput){
-                    return true;
+                    if(emailInput.includes("@")){
+                        return true;
+                    }
+                    else{
+                        console.log(" --> Make sure that the email is formatted properly!");
+                        return false;
+                    }
                 }
                 else{
                     console.log("Enter the Engineer's email address!");
@@ -233,7 +273,7 @@ const addIntern = () => {
                         return true;
                     }
                     else{
-                        console.log(" - Input contains invalid characters");
+                        console.log(" --> Input contains invalid characters");
                         return false;
                     }
                 }
@@ -249,7 +289,35 @@ const addIntern = () => {
             message: "Please enter the Intern's ID (required):",
             validate: idInput => {
                 if(idInput){
-                    return true;
+                    var invalid = false;
+
+                    //check if idInput matches manager id.
+                    if(idInput == team.manager.getId()){
+                        invalid = true;
+                    }
+    
+                    team.engineers.forEach(engineer=>{
+                        //if any engineer id's match idInput, set invalid to true.
+                        if(idInput == engineer.getId()){
+                            invalid = true;
+                        }
+                    })
+    
+                    //do the same for interns.
+                    team.interns.forEach(intern=>{
+                        //if any intern id's match idInput, set invalid to true.
+                        if(idInput == intern.getId()){
+                            invalid = true;
+                        }
+                    })
+                
+                    if(invalid){
+                        console.log(" --> This ID is already being used by someone else.")
+                        return false;
+                    }
+                    else{
+                        return true;
+                    }
                 }
                 else{
                     console.log("Enter the Intern's ID!");
@@ -263,7 +331,13 @@ const addIntern = () => {
             message: "Please enter the Intern's email address (required):",
             validate: emailInput => {
                 if(emailInput){
-                    return true;
+                    if(emailInput.includes("@")){
+                        return true;
+                    }
+                    else{
+                        console.log(" --> Make sure that the email is formatted properly!");
+                        return false;
+                    }
                 }
                 else{
                     console.log("Enter the Intern's email address!");
