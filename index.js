@@ -14,6 +14,16 @@ let team = {
     interns: []
 };
 
+//function to format names
+function captFirstLetter(text){
+    let newText = text.toLowerCase()//convert all letters to lowercase
+        .split(' ')//split them at every space
+        .map((element) => element.charAt(0).toUpperCase() + element.substring(1))//capitalize first letter of each element
+        .join(' ');//rejoin the elements with a space in between
+
+    return newText;
+};
+
 //prompt functions
 const addTeam = () => {
     return inquirer.prompt([
@@ -113,7 +123,9 @@ const addManager = () => {
         }
     ])
     .then(managerInfo => {
+        managerInfo.name = captFirstLetter(managerInfo.name);
         const manager = new Manager(managerInfo.name, managerInfo.id, managerInfo.email, managerInfo.officeNumber)
+
         team.manager = manager;
         //check what managerInfo.next is and act accordingly
         if(managerInfo.next === 'Add an Engineer'){
@@ -240,6 +252,7 @@ const addEngineer = () => {
         }
     ])
     .then(engineerInfo => {
+        engineerInfo.name = captFirstLetter(engineerInfo.name);
         const engineer = new Engineer(engineerInfo.name, engineerInfo.id, engineerInfo.email, engineerInfo.github)
         team.engineers.push(engineer);
         //check what engineerInfo.next is and act accordingly
@@ -367,6 +380,7 @@ const addIntern = () => {
         }
     ])
     .then(internInfo => {
+        internInfo.name = captFirstLetter(internInfo.name);
         const intern = new Intern(internInfo.name, internInfo.id, internInfo.email, internInfo.school)
         team.interns.push(intern);
         //check what internInfo.next is and act accordingly
