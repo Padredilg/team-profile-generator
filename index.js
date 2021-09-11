@@ -52,7 +52,7 @@ const addManager = () => {
             message: "Please enter the manager's name (required):",
             validate: managerInput => {
                 if(managerInput){
-                    var letters = /^[A-Za-z]+$/;
+                    var letters = /^[a-zA-Z\s]*$/;
                     if(managerInput.match(letters)){
                         return true;
                     }
@@ -153,7 +153,7 @@ const addEngineer = () => {
             message: "Please enter the Engineer's name (required):",
             validate: engineerInput => {
                 if(engineerInput){
-                    var letters = /^[A-Za-z]+$/;
+                    var letters = /^[a-zA-Z\s]*$/;
                     if(engineerInput.match(letters)){
                         return true;
                     }
@@ -281,7 +281,7 @@ const addIntern = () => {
             message: "Please enter the Intern's name (required):",
             validate: internInput => {
                 if(internInput){
-                    var letters = /^[A-Za-z]+$/;
+                    var letters = /^[a-zA-Z\s]*$/;
                     if(internInput.match(letters)){
                         return true;
                     }
